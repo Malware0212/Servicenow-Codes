@@ -1,0 +1,47 @@
+(function executeRule(current, previous /*null when async*/) {
+	var htmlText;
+	var targetTable = "sc_req_item";
+	var targetTableSysId = current.sys_id;
+	var pdfName = current.number;
+	gs.log('aclera new test');
+
+	var gr = new GlideRecord("sc_req_item");
+		if (gr.get(targetTableSysId)){
+		
+		htmlText ='<span style="font-family: verdana, geneva; font-size: 8pt;">'+"Request For Service ticket: " 
+		+ gr.number.toString()
+		+"</br>Opened by: " + gr.opened_by.name + "</br>"
+		+ 'Here are the RCA Document Request details '
+		+ "</br></br>"
+		+ "</br>" + 'RCA Owner: ' + gr.variables.rca_document_rca_owner.name
+		+ "</br>" + 'Company: ' + gr.variables.rca_document_company	
+		+ "</br>" + 'Problem Task: ' + gr.variables.rca_document_request_problem_task.number
+		+ "</br>" + 'Problem Task Priority: ' + gr.variables.rca_document_problem_priority	
+		+ "</br>" + 'Date / Time Incident Occurred: ' + gr.variables.date_time_incident_occurred	
+		+ "</br>" + 'Data / Time Incident Resolved: ' + gr.variables.date_time_incident_resolved
+		+ "</br>" + 'Root Cause Summary: ' + gr.variables. rca_document_request_root_cause	
+		+ "</br>" + 'RCA Executive Summary: ' + gr.variables.rca_document_request_rca_executive_summary	
+		+ "</br>" + 'Investigation and Resolution: ' + gr.variables.rca_document_request_investigation_and_resolution
+		+ "</br>" + 'Contributing Factors: ' + gr.variables.rca_document_request_contributing_factors
+		+ "</br>" + 'Problem Statement: ' + gr.variables.rca_document_problem_statement	
+		+ "</br>" + 'Why #1: ' + gr.variables.rca_document_why_1
+		+ "</br>" + 'Answer #1: ' + gr.variables.rca_document_answer_1	
+		+ "</br>" + 'Why #2: ' + gr.variables.rca_document_why_2	
+		+ "</br>" + 'Answer #2: ' + gr.variables.rca_document_answer_2	
+		+ "</br>" + 'Why #3: ' + gr.variables.rca_document_why_3	
+		+ "</br>" + 'Answer #3: ' + gr.variables.rca_document_answer_3	
+		+ "</br>" + 'Why #4: ' + gr.variables.rca_document_why_4
+		+ "</br>" + 'Answer #4: ' + gr.variables.rca_document_answer_4
+		+ "</br>" + 'Why #5: ' + gr.variables.rca_document_why_5
+		+ "</br>" + 'Answer #5: ' + gr.variables.rca_document_answer_5
+		+ "</br>" + 'Lesson Learned: ' + gr.variables.rca_document_request_lesson_learned
+		+ "</br>" + 'Is this a Known Error? (Y/N): ' + gr.variables.rca_document_request_is_this_a_known_error
+		+ "</br>" + 'Corrective Actions & Preventative Actions (CAPA): ' + "</br>"  + gr.variables.corrective_actions_preventative_actions_capa	
+		+ "</br>" + 'Incident Timeline: ' + "</br>" + gr.variables.rca_document_incident_timeline
+	}
+	gs.log('aclera new test3 ');
+	var v = new sn_pdfgeneratorutils.PDFGenerationAPI;
+	var result = v.convertToPDF(htmlText, targetTable, targetTableSysId, pdfName);
+	gs.info("ACLERA new PDF Result :" + JSON.stringify(result));
+
+})(current, previous);
