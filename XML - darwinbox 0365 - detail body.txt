@@ -1,0 +1,28 @@
+{
+    "sysparm_quantity": 1,
+    "variables":
+{
+        "unique_id": "darwinbox",
+        "first_name": "darwinbox",
+        "middle_name": "darwinbox",
+        "last_name": "darwinbox",
+        "suffix" : "darwinbox",
+        "employee_id" : "darwinbox",
+        "bank_rank" : "ADI",
+        "external_email_required" : "Yes",
+        "contact_number" : "darwinbox",	
+        "onboarding_date" : "09/14/2023",
+        "manager" : "IBMFM Justin Aclera",
+        "department": "acb1c2dd1b540d904ed90e12f54bcba5", 
+        "department_head" : "IBMFM Justin Aclera",
+        "division_name" : "AMT, ADMIN ACCTS REVIEW DEPT",
+        "division_head" : "IBMFM Justin Aclera",
+        "group_head" : "IBMFM Justin Aclera",
+        "business_unit_fco" : "Elyrose S. Palomares",
+        "pcc_code" : "AH02139",
+        "segment" : "CHIEF CREDIT",
+        "location" : "DarwinBox",
+        "budget_code_if_applicable" : "DarwinBox",
+        "work_arrangment" : "Onsite"
+    }
+}

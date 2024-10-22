@@ -1,0 +1,71 @@
+function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   if (isLoading || newValue === '') {
+      return;
+   }
+// aclera - User Story 13544: Change Module Enhancement - QSIP - start	
+	var checkType = g_form.getValue('change_task_type');
+	
+		var msgIssue ="List down all the issues encountered during the implementation and actions taken to resolve the issue"+ '\n'+ '1.' + '\n'+"2."+ '\n' + "3.";
+		var msgActionPlan = 'List the action plans needed to be taken if theres any' + '\n'+ '1.' + '\n'+"2."+ '\n' + "3.";
+		var msgLessonsLearned = 'List of learnings to be integrated the next time the same Change is implemented to prevent the same issue from recurring' + '\n'+ '1.' + '\n'+"2."+ '\n' + "3.";
+	
+	if (checkType == 'post implementation review'){
+		g_form.setSectionDisplay('post_implementationreview', true);
+		
+		u_addPlaceholderAttribute('u_issues_encoutered_and_actions_taken', msgIssue);
+		u_addPlaceholderAttribute('u_next_action_plans', msgActionPlan);
+		u_addPlaceholderAttribute('u_lessons_learned', msgLessonsLearned);
+		
+		g_form.setLabelOf('number','PIR Number');
+		g_form.setMandatory('u_issues_encoutered_and_actions_taken', true);
+		g_form.setMandatory('u_next_action_plans', true);
+		g_form.setMandatory('u_lessons_learned', true);
+
+		g_form.getControl('u_issues_encoutered_and_actions_taken').style.height = '150px';
+		g_form.getControl('u_next_action_plans').style.height = '150px';
+		g_form.getControl('u_lessons_learned').style.height = '150px';
+		
+		var getChange = g_form.getValue('change_request');
+			if (getChange != ''){
+				var ga = new GlideAjax('ChangeRequestDetails');
+				ga.addParam('sysparm_name', 'getChangeInfo');
+				ga.addParam('sys_change', getChange);
+				ga.getXMLAnswer(handleResponse);
+			}
+			else{
+				g_form.showFieldMsg('change_request','No Change request number','error');
+			}
+	}
+	else{
+		g_form.setMandatory('u_issues_encoutered_and_actions_taken', false);
+		g_form.setMandatory('u_next_action_plans', false);
+		g_form.setMandatory('u_lessons_learned', false);
+		g_form.setSectionDisplay('post_implementationreview', false);
+		g_form.setValue('u_change_actual_start_date_inherit_task', '');
+		g_form.setValue('u_change_actual_end_date_inherit_task', '');
+		g_form.setLabelOf('number','Number');
+	}
+	
+	function handleResponse(response) {
+        var answer = JSON.parse(response);
+		var Astart = answer.actual_start;
+		var Estart = answer.actual_end;
+		
+		if (checkType == 'post implementation review'){
+			g_form.setValue('u_change_actual_start_date_inherit_task', Astart);
+			g_form.setValue('u_change_actual_end_date_inherit_task', Estart);
+			
+			g_form.getControl('u_issues_encoutered_and_actions_taken').style.height = '150px';
+			g_form.getControl('u_next_action_plans').style.height = '150px';
+			g_form.getControl('u_lessons_learned').style.height = '150px';
+		}
+			if (Astart == ''){
+			g_form.showFieldMsg('u_change_actual_start_date_inherit_task','Change Actual Start date Value is: ' + Astart,'error');
+			}
+		
+			if (Estart == ''){
+			g_form.showFieldMsg('u_change_actual_end_date_inherit_task','Change Actual End date Value is: ' + Estart,'error');
+			}
+		}
+	}
+// aclera - User Story 13544: Change Module Enhancement - QSIP - end

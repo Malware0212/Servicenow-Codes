@@ -1,0 +1,8 @@
+var gr = new GlideRecord('sys_user');
+gr.addQuery('active','=',true);
+gr.query();
+
+while (gr.next()) {
+gr.u_survey_notified = false;
+gr.update();
+ }

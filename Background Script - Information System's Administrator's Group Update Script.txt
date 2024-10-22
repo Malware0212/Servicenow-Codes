@@ -1,0 +1,15 @@
+var req_item = new GlideRecord('sc_req_item');
+req_item.get('d3f185751b8f65d04ed90e12f54bcb08');
+req_item.query();
+gs.print(req_item.getRowCount() + ' records were found.');
+
+while (req_item.next()) {
+    gs.print('Before Information Systems Administrators Group: '  + req_item.variables.AppCodeGFC_update_info_system_admin_unit);
+    req_item.variables.AppCodeGFC_update_info_system_admin_unit = 'INFORMATION SYSTEMS';
+    gs.print('Tickets: ' + req_item.number);
+    gs.print('After Information Systems Administrators Group: ' + req_item.variables.AppCodeGFC_update_info_system_admin_unit);
+    req_item.update();
+    gs.print('check Information Systems Administrators Group: ' + req_item.variables.AppCodeGFC_update_info_system_admin_unit);
+}
+ 
+ 

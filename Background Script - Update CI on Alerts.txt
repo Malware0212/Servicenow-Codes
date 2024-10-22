@@ -1,0 +1,16 @@
+var app = new GlideRecord('em_alert');
+app.get('ad0ed3971b57f5148beb635fe54bcb2d');//sys_id
+// app.addQuery(); //Mass request
+app.query();
+gs.print(app.getRowCount() + “ records were found.”);
+
+while (app.next()) {
+    gs.print('Alert Number: ' + app.number);
+    gs.print('Current CI: ' + app.cmdb_ci.name);
+    gs.print('Current CI sys id: ' + app.cmdb_ci);
+    app.cmdb_ci = 'deb72634dbb58490b51190c3db96193c';
+    gs.print('Alert Number: ' + app.number);
+    gs.print('Updated CI: ' + app.cmdb_ci.name);
+    gs.print('Updated CI sys id: ' + app.cmdb_ci);
+    app.update();
+}

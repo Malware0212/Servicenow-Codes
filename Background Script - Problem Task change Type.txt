@@ -1,0 +1,13 @@
+var app = new GlideRecord("problem_task");
+app.get('6a4b410d1b7c1d103bb162cde54bcbe5');//sys_id
+// app.addQuery(); //Mass request
+app.query();
+gs.print(app.getRowCount() + “ records were found.”);
+
+while (app.next()) {
+    gs.print('Current Type: ' + app.problem_task_type);
+    app.problem_task_type = 'general';
+    gs.print('Updated Type: ' + app.problem_task_type);
+    app.close_notes = 'Changing Type: ' +  app.problem_task_type;
+    app.update();
+}

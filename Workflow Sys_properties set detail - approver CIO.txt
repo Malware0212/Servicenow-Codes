@@ -1,0 +1,3 @@
+var CIOApprover = gs.getProperty("CIO.Approver");
+	answer = [];
+	answer.push(CIOApprover);

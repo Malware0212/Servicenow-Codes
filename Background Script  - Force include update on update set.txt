@@ -1,0 +1,9 @@
+var rec = new GlideRecord('sys_user_group');
+rec.get('1c5ce5e7dbead1101f26ab5dd396199a');
+//Push the record into the current update set  
+var um = new GlideUpdateManager2();
+um.saveRecord(rec);
+
+
+
+Change table name and sys id on the target record you want to include in the update set.

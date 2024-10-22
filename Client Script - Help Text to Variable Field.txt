@@ -1,0 +1,10 @@
+function onLoad() {
+	var Details = 'Provide critical milestone and indicate Go or No Go Decision criteria and who will authorize the decision.' + '\n\n' + 'Example: ' + '\n' + 'Milestone #1: Encountered issue on step xx. Go or No Go Decision c/o Division Head and ITO Head' + '\n' + 'Milestone #2: Some test criteria were not successful. Go or No Go Decision c/o Division Head and System Owner' + '\n\n' + 'If Go/No Go Criteria is not applicable please provide justification.';
+	
+	var el = g_form.getControl('u_go_no_go_criteria');
+	el.style.height = '170px';
+	
+	//g_form.setValue('u_go_no_go_criteria', Details);
+	u_addPlaceholderAttribute('u_go_no_go_criteria', Details);
+   
+}

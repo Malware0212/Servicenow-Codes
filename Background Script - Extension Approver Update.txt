@@ -1,0 +1,12 @@
+var app = new GlideRecord("problem_task");
+app.get('8e67b1551b840e143bb162cde54bcb93');//sys_id
+// app.addQuery(); //Mass request
+app.query();
+gs.print(app.getRowCount() + “ records were found.”);
+
+while (app.next()) {
+    gs.print('Current Approver: ' + app.u_general_task_extension_approver.name);
+    app.u_general_task_extension_approver = '7b3ab40a1bf079d0f193202ee54bcb4a';
+    gs.print('Updated Approver: ' + app.u_general_task_extension_approver.name);
+    app.update();
+}

@@ -1,0 +1,4 @@
+answer = [];
+var Endorser = current.variables.rca_document_rca_owner.department.dept_head.toString();
+gs.info('Aclera RCA document request: workflow Endorser: ' + Endorser);
+answer.push(Endorser);

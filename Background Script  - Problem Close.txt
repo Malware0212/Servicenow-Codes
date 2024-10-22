@@ -1,0 +1,16 @@
+var prob = new GlideRecord('problem');
+prob.addQuery('number=PRB0040550');
+prob.query();
+gs.print(prob.getRowCount() + “ records were found.”);
+
+while (prob.next()) {
+ gs.print('Tickets: ' + prob.number);
+ prob.state = 107;
+ prob.active = 'false';
+ prob.close_notes = 'test';
+ prob.setUseEngines(false);
+ prob.resolved_by = gs.getUserID();
+ //prob.update();
+ }
+ 
+ 

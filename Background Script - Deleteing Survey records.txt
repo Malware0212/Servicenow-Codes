@@ -1,0 +1,17 @@
+var assessmentName = 'Customer Request Satisfaction Survey';
+
+var assessment = new GlideRecord('asmt_assessment_instance');
+assessment.addQuery('metric_type.name', assessmentName);
+assessment.query();
+gs.print('Assessments to delete: ' + assessment.getRowCount());
+while (assessment.next()) {
+    // Query for the answers and delete them first
+    var aiq = new GlideRecord('asmt_assessment_instance_question');
+    aiq.addQuery('instance', assessment.sys_id);
+    aiq.query();
+    gs.print('Deleting ' + aiq.getRowCount() + ' answers for ' + assessment.metric_type.name + ' assessment.');
+    aiq.deleteMultiple();
+
+    // Delete the assessment instance
+    assessment.deleteRecord();
+}

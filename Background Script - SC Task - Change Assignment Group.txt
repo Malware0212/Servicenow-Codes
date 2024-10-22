@@ -1,0 +1,12 @@
+var gr = new GlideRecord('sc_task');
+gr.addQuery('request_item=f0f8d9631ba1bdd4f193202ee54bcb4b^ORrequest_item=021ad1af1ba1bdd4f193202ee54bcbed^ORrequest_item=770bd52f1be1bdd4f193202ee54bcbd8^ORrequest_item=5fdbdde71b25bdd4f193202ee54bcba3^ORrequest_item=24ac59e31b65bdd4f193202ee54bcbb7^ORrequest_item=be6dd9671ba5bdd4f193202ee54bcba7^ORrequest_item=f92ed1631be5bdd4f193202ee54bcb1c^assignment_group=8ec43809db658450b51190c3db9619c3'); //Mass request
+//gr.get('8ae7e3e81bf7f5103bb162cde54bcbfe');//sys_id
+gr.query();
+gs.print(gr.getRowCount() + ' records were found.');
+while (gr.next()) {
+    gs.print('Tickets Sysapproval: ' + gr.number);
+    gs.print('Current Assignment Group: ' + gr.assignment_group.name);
+    gr.assignment_group = '4637a2d9db2ce450dca42e1fd396195e';
+    gs.print('New Assignment Group: ' + gr.assignment_group.name);
+    gr.update();
+}

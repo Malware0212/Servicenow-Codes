@@ -1,0 +1,11 @@
+var gr = new GlideRecord('sc_req_item');
+//gr.get('9bf2cef3dbbf9990141bab5dd39619ce'); //single sys id
+//gr.inc.addQuery(''); //Query of tickets
+gr.query();
+gs.print(gr.getRowCount() + “ records were found.”);
+
+while(gr.next()){
+gs.print('Tickets: ' + gr.number);
+var workflow = new Workflow;
+workflow.restartWorkflow(gr,true);
+}

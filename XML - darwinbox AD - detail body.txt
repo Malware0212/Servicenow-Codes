@@ -1,0 +1,15 @@
+{
+    "sysparm_quantity": 1,
+    "variables":
+    {
+        "unique_id": "AD darwinbox - Mandatory Field",
+        "request_type": "NEW",
+        "first_name": "AD darwinbox - Mandatory Field",
+        "middle_name": "AD darwinbox - Mandatory Field",
+        "last_name": "AD darwinbox - Mandatory Field",
+        "department": "acb1c2dd1b540d904ed90e12f54bcba5", 
+        "computer_name" : "AD darwinbox - Mandatory Field",
+        "access_details" : "AD darwinbox",
+        "business_justification" : "AD darwinbox - Mandatory Field"
+    }
+}
